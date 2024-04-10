@@ -1,0 +1,92 @@
+/*
+LED light 1 starts on
+All servos at 0 degrees
+
+If (circuit1 is completed) {
+	Servo1 rotate 180
+	Led light 1 = off
+	Led light 2 = on
+}
+
+If (circuit2 is completed) {
+	Servo2 rotate 180
+	Led light 2 = off
+	Led light 3 = on
+}
+
+If (circuit3 is completed) {
+	Servo3 rotate 180
+	Led light 3 = off
+}
+*/
+
+#include <Servo.h>
+
+//Button 1 variables
+const int buttonPin1 = 2; // button pin number
+const int ledPin = 13;    // the number of the LED pin
+int buttonState1 = 0;  // variable for reading the pushbutton status
+
+//Button 2 variables
+const int buttonPin2 = 3; // button pin number
+int buttonState2 = 0;  // variable for reading the pushbutton status
+
+//Button 3 variables
+const int buttonPin3 = 4;
+int buttonState3 = 0;
+
+
+//servo 1 variables
+Servo myservo1; //create servo variable
+
+//servo 2 variables
+Servo myservo2;
+
+//servo 3 variables
+Servo myservo3;
+
+void setup() {
+
+  myservo1.attach(9); //attach servo on pin 9
+  myservo2.attach(10); //attach servo on pin 10
+  myservo3.attach(11); //attach servo on pin 11
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(buttonPin3, INPUT);
+}
+
+void loop() {
+  
+  buttonState1 = digitalRead(buttonPin1); // read the state of the pushbutton value:
+  buttonState2 = digitalRead(buttonPin2); 
+  buttonState3 = digitalRead(buttonPin3); 
+
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState1 == HIGH) {
+    myservo1.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin, HIGH);  // turn LED on:
+  } else {
+    myservo1.write(0); //servo turns 0 degrees
+    digitalWrite(ledPin, LOW); // turn LED off:
+  }
+
+
+if (buttonState2 == HIGH) {
+    myservo2.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin, HIGH);  // turn LED on:
+  } else {
+    myservo2.write(0); //servo turns 0 degrees
+    digitalWrite(ledPin, LOW); // turn LED off:
+  }
+
+
+if (buttonState3 == HIGH) {
+    myservo3.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin, HIGH);  // turn LED on:
+  } else {
+    myservo3.write(0); //servo turns 0 degrees
+    digitalWrite(ledPin, LOW); // turn LED off:
+  }
+
+}
