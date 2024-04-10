@@ -1,0 +1,52 @@
+/*
+LED light 1 starts on
+All servos at 0 degrees
+
+If (circuit1 is completed) {
+	Servo1 rotate 180
+	Led light 1 = off
+	Led light 2 = on
+}
+
+If (circuit2 is completed) {
+	Servo2 rotate 180
+	Led light 2 = off
+	Led light 3 = on
+}
+
+If (circuit3 is completed) {
+	Servo3 rotate 180
+	Led light 3 = off
+}
+*/
+
+#include <Servo.h>
+//Button variables
+const int buttonPin = 2; // button pin number
+const int ledPin = 13;    // the number of the LED pin
+
+// variables will change:
+int buttonState = 0;  // variable for reading the pushbutton status
+
+
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(ledPin, OUTPUT);
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+   // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState == HIGH) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+  } else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
+  }
+
+}
