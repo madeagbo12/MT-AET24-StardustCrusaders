@@ -1,0 +1,81 @@
+#include <Servo.h>
+
+//Button 1 variables
+const int buttonPin1 = 2; // button pin number
+const int ledPin1 = 13;    // the number of the LED pin
+int buttonState1 = 0;  // variable for reading the pushbutton status
+
+//Button 2 variables
+const int buttonPin2 = 3; // button pin number
+const int ledPin2 = 12;
+int buttonState2 = 0;  // variable for reading the pushbutton status
+
+//Button 3 variables
+const int buttonPin3 = 4;
+const int ledPin3 = 11;
+int buttonState3 = 0;
+
+
+//servo 1 variables
+Servo myservo1; //create servo variable
+
+//servo 2 variables
+Servo myservo2;
+
+//servo 3 variables
+Servo myservo3;
+
+void setup() {
+
+  myservo1.attach(8); //attach servo on pin 8
+  myservo2.attach(9); //attach servo on pin 9
+  myservo3.attach(10); //attach servo on pin 10
+
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(buttonPin3, INPUT);
+}
+
+void loop() {
+  
+  buttonState1 = digitalRead(buttonPin1); // read the state of the pushbutton value:
+  buttonState2 = digitalRead(buttonPin2); 
+  buttonState3 = digitalRead(buttonPin3); 
+
+ 
+
+  if (buttonState1 == HIGH) {
+    myservo1.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin1, HIGH);  // turn LED on:
+  } else {
+    myservo1.write(0); //servo turns 0 degrees
+     digitalWrite(ledPin1, LOW);
+  }
+
+
+if (buttonState2 == HIGH) {
+    myservo2.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin2, HIGH);
+   
+  } else {
+    myservo2.write(0); //servo turns 0 degrees
+    digitalWrite(ledPin2, LOW);
+    
+  }
+
+
+if (buttonState3 == HIGH) {
+    myservo3.write(180); //servo turns 180 degrees
+    digitalWrite(ledPin3, HIGH);
+    
+  } else {
+    myservo3.write(0); //servo turns 0 degrees
+    digitalWrite(ledPin3, LOW);
+   
+  }
+
+}
